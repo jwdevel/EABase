@@ -488,7 +488,7 @@
 	//     #endif
 	// #endif
 	#if !defined(EA_HAS_INCLUDE_AVAILABLE)
-		#if EA_COMPILER_CPP17_ENABLED || EA_COMPILER_CLANG || EA_COMPILER_GNUC
+		#if (defined(EA_COMPILER_CPP17_ENABLED) && EA_COMPILER_CPP17_ENABLED) || (defined(EA_COMPILER_CLANG) && EA_COMPILER_CLANG) || (defined(EA_COMPILER_GNUC) && EA_COMPILER_GNUC)
 			#define EA_HAS_INCLUDE_AVAILABLE 1
 		#else
 			#define EA_HAS_INCLUDE_AVAILABLE 0
@@ -515,11 +515,11 @@
 	// #endif
 
 	#if !defined(EA_HAS_INCLUDE)
-		#if EA_COMPILER_CPP17_ENABLED
+		#if (defined(EA_COMPILER_CPP17_ENABLED) && EA_COMPILER_CPP17_ENABLED)
 			#define EA_HAS_INCLUDE(x) __has_include(x)
-		#elif EA_COMPILER_CLANG
+		#elif (defined(EA_COMPILER_CLANG) && EA_COMPILER_CLANG)
 			#define EA_HAS_INCLUDE(x) __has_include(x)
-		#elif EA_COMPILER_GNUC
+		#elif (defined(EA_COMPILER_GNUC) && EA_COMPILER_GNUC)
 			#define EA_HAS_INCLUDE(x) __has_include(x)
 		#endif
 	#endif
